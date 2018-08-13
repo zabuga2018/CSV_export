@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+	<!-- Action to open To-do Task list -->
+	<act_window 
+		id="action_export_to_csv" 
+		name="Export to csv"
+		res_model="export_to_csv.wizard" 
+		view_mode="form" target="new"/>
+	<!-- Menu item to open To-do Task list -->
+	<menuitem 
+		id="menu_export_to_csv" 
+		name="Export to csv"
+		action="action_export_to_csv" />
+	
+</odoo>
