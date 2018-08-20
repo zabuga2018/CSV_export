@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
 	<!-- Action to open type order list -->
-	<act_window 
-			id="type_order_action" 
-			name="type order"
-			res_model="type.order" 
+	<act_window
+			id="type_order_action"
+			name="Type of sale order"
+			res_model="sale.order.type"
 			view_mode="tree,form"/>
-	
+
 	<!-- Menu-->
 	<menuitem id="type_order_parent_sale_config_menu"
-            name="Type order"
+            name="Type of sale order"
             parent="sale.menu_sale_config"
             action="type_order_action"/>
-            
+
     <!--type order tree-->
 	<record id="type_order_view_tree" model="ir.ui.view">
-            <field name="name">type.order.tree</field>
-            <field name="model">type.order</field>
-            <field name="arch" type="xml">
-                <tree string="Type order">
-                    <field name="name"/>
-            	</tree>
-            </field>
+        <field name="name">type.order.tree</field>
+        <field name="model">sale.order.type</field>
+        <field name="arch" type="xml">
+            <tree string="Type order">
+                <field name="name"/>
+        	</tree>
+        </field>
     </record>
-    
+
     <!--type order form-->
 	<record id="type_order_view_form" model="ir.ui.view">
-            <field name="name">type.order.form</field>
-            <field name="model">type.order</field>
-            <field name="arch" type="xml">
-	            <form string="type order">
-	                <group name="main">
-	                    <field name="name"/>
-	            	</group>
-	            </form>	
-            </field>
-    </record>         
-</odoo>            
-            
+        <field name="name">type.order.form</field>
+        <field name="model">sale.order.type</field>
+        <field name="arch" type="xml">
+            <form string="type order">
+                <group name="main">
+                    <field name="name" groups="base.system_user"/>
+            	</group>
+            </form>
+        </field>
+    </record>
+
+</odoo>
