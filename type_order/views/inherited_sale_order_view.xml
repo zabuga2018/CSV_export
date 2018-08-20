@@ -7,13 +7,19 @@
       <field name="inherit_id" ref="sale.view_order_tree" />
       <field name="arch" type="xml">
 
-        <field name="state" position="before">
-          <field name="typeorder" />
-        </field>
+        <xpath expr="//field[@name='state']" position="before">
+            <field name="sale_order_type_id" />
+        </xpath>
+
+        <!-- <field name="state" position="before">
+          <field name="sale_order_type_id" />
+        </field> -->
+
 
       </field>
     </record>
-    
+
+    <!-- view_order_form_inherit_type_order -->
     <!--type order add to form sale.order-->
     <record id="inherited_sale_view_order_form_inherit_type_order" model="ir.ui.view">
         <field name="name">sale.order.form</field>
@@ -21,22 +27,24 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="typeorder" string="type order" options="{'no_open': True,'no_create': True}"/>
+                <field name="sale_order_type_id"
+                    string="Type of sale order"
+                    help="Set type of sale order."
+                    options="{'no_create': True}"/>
             </xpath>
         </field>
     </record>
-    
+
     <!--type order add to filter sale.order -->
      <record id="inherited_view_sales_order_filter_inherit_type_order" model="ir.ui.view">
             <field name="name">sale.order.list.select</field>
             <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
             <field name="arch" type="xml">
-                <search>
-                    <group expand="0" string="Group By">
-                        <filter name="typeorder" string="Type order" domain="[]" context="{'group_by':'typeorder'}"/>
-                    </group>
-               </search>
+                <xpath expr="//group//filter[2]" position="after">
+                    <filter name="sale_order_type_id" string="Type order"
+                        domain="[]" context="{'group_by':'sale_order_type_id'}"/>
+                </xpath>
             </field>
         </record>
 </odoo>
