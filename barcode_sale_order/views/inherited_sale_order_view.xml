@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	    
+    <!--barcode add to form sale.order-->
+    <record id="inherited_sale_view_order_form_inherit_barcode_sale_order" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_order_type_id']" position="after">
+  				         
+	                <field name="barcode_sequence"
+	                    string="Barcode"
+	                    help="Barcode of sale order."
+	                    readonly = "True"/>
+                
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
