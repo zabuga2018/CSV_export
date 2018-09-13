@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- template of email-->
+        <record id="export_to_csv_email_template" model="mail.template">
+          <field name="name">Email with attached csv</field>
+          <field name="email_from">odoo.export.csv@gmail.com</field>
+          <field name="subject">Остатки товаров</field>
+          <field name="email_to">${object.partner_id.email|safe}</field>
+          <field name="lang">${object.partner_id.lang}</field>
+          <field name="model_id" ref="export_to_csv.model_export_to_csv_wizard"/>
+          <field name="auto_delete" eval="True"/>
+		  <field name="body_html">
+		   <![CDATA[ 
+			   <p>Добрый день, ${object.partner_id.name}. <br/><br/>
+				Высылаем файл с нашими остатками товаров.<br/></p>
+				С наилучшими пожеланиями. <br/>
+				Компания ${object.user_id.company_name}.
+		      ]]>
+		  </field>
+       </record>
+    </data>
+</odoo>
