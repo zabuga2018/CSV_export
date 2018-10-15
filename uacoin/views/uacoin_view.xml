@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action to open Uacoin accounts list -->
+	<act_window
+			id="uacoin_account_action"
+			name="Uacoin accounts"
+			res_model="uacoin.account"
+			view_mode="tree,form"/>
+	
+	<!-- Action to open Uacoin accounts list -->
+	<act_window
+			id="uacoin_payment_action"
+			name="Uacoin payment"
+			res_model="uacoin.payment"
+			view_mode="tree,form"/>
+	
+	<!-- Menu-->
+	<menuitem id="uacoin_menu_root"
+            name="Uacoin"
+            sequence="7"/>
+            
+    <menuitem id="uacoin_account_menu"
+            name="Uacoin accounts"
+            parent="uacoin_menu_root"
+            action="uacoin_account_action"/>
+    
+    <menuitem id="uacoin_payment_menu"
+            name="Uacoin payment"
+            parent="uacoin_menu_root"
+            action="uacoin_payment_action"/>
+	
+	<!--Uacoin accounts tree-->            
+    <record id="uacoin_account_tree" model="ir.ui.view">
+        <field name="name">uacoin_account.tree</field>
+        <field name="model">uacoin.account</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="partner_phone"/>
+                <field name="account_size"/>
+                <field name="payments_amount"/>
+                <field name="balance"/>
+        	</tree>
+        </field>
+    </record>
+    
+    <!--Uacoin accounts form-->
+	<record id="uacoin_account_form" model="ir.ui.view">
+        <field name="name">uacoin_account.form</field>
+        <field name="model">uacoin.account</field>
+        <field name="arch" type="xml">
+            <form string="Uacoin account">
+            	<group name="main">
+	                <field name="partner_id" string="Partner"/>
+	                <field name="partner_phone" string="Phone"/>
+	                <field name="account_size"/>
+	                <field name="payments_amount"/>
+	                <field name="balance"/>
+	                <field name="payment_ids"/>
+				</group>		   
+        	</form>
+        </field>
+    </record>
+    
+    <!--Uacoin payment tree-->
+	<record id="uacoin_payment_tree" model="ir.ui.view">
+        <field name="name">uacoin_payment.tree</field>
+        <field name="model">uacoin.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+	            <field name="payment_date"/>
+			    <field name="account_id"/>
+			    <field name="journal_id"/>
+			    <field name="payment_sum"/>
+			    <field name="comment"/>
+			    <field name="user_id"/>
+        	</tree>
+        </field>
+    </record>
+    
+    <!--Uacoin payment form-->
+	<record id="uacoin_payment_form" model="ir.ui.view">
+        <field name="name">uacoin_payment.form</field>
+        <field name="model">uacoin.payment</field>
+        <field name="arch" type="xml">
+            <form string="Uacoin payment">
+	            <group name="main">
+	                <field name="payment_date" string="Date"/>
+				    <field name="account_id" string="Account"/>
+				    <field name="journal_id"/>
+				    <field name="payment_sum"/>
+				    <field name="comment"/>
+				    <field name="user_id"/>
+			    </group>
+        	</form>
+        </field>
+    </record> 
+</odoo>
