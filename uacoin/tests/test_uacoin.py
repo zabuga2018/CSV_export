@@ -5,7 +5,7 @@ from datetime import date
 
 
 class TestUacoin(TransactionCase):
-    
+
     def setUp(self):
         super(TestUacoin, self).setUp()
         self.user_id = self.env.ref('base.user_root').id
@@ -28,7 +28,7 @@ class TestUacoin(TransactionCase):
             'comment': 'comment1',
             'user_id': self.user_id,
             })
-        self.uacoin_account_model._compute_amount_balance()
+        # self.uacoin_account_model._compute_amount_balance()
         self.assertEqual(account.payments_amount, 520)
         self.assertEqual(account.balance, 1480)
         '''
@@ -36,4 +36,3 @@ class TestUacoin(TransactionCase):
         print('payments amount '+account.payments_amount.__str__())
         print('balance '+account.balance.__str__())
         '''
-  

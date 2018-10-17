@@ -3,10 +3,10 @@
     'name': 'Sales orders barcodes',
     'description': 'Adds barcodes to sale orders',
     'author': 'Alexey Zabuga',
-    'depends': ['base', 'sale', 'type_order'],
+    'depends': ['base', 'sale'],
     'data': [
-            'data/barcode_sale_order_data.xml',
-            'report/report_sale_order.xml',
-            'views/inherited_sale_order_view.xml',
-            ],
+        'data/barcode_sale_order_data.xml',
+        'report/report_sale_order.xml',
+        'views/inherited_sale_order_view.xml',
+    ],
 }

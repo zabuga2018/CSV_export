@@ -5,8 +5,8 @@
     'author': 'Alexey Zabuga',
     'depends': ['base', 'sale'],
     'data': [
-            'security/ir.model.access.csv',
-            'views/inherited_sale_order_view.xml',
-            'views/type_order_view.xml',
-            ],
+        'security/ir.model.access.csv',
+        'views/inherited_sale_order_view.xml',
+        'views/type_order_view.xml',
+    ],
 }
