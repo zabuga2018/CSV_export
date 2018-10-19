@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+#
+#
 {
     'name': 'UACOIN',
     'description': 'Savings Paying System UACOIN',
