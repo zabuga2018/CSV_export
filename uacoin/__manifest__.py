@@ -6,6 +6,6 @@
     'depends': ['base', 'account'],
     'data': [
             'views/uacoin_view.xml',
-            ],
-'application': True,
+    ],
+    'application': True,
 }
