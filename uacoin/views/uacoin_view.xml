@@ -14,6 +14,15 @@
 			res_model="uacoin.payment"
 			view_mode="tree,form"/>
 	
+	<act_window
+			id="uacoin_payment_action_form"
+			name="Uacoin payment"
+			res_model="uacoin.payment"
+			src_model="uacoin.account"
+			target="new"
+			view_mode="form"
+			domain="[('account_id','=','default_account_id')]"/>		
+	
 	<!-- Menu-->
 	<menuitem id="uacoin_menu_root"
             name="Uacoin"
@@ -28,7 +37,7 @@
             name="Uacoin payment"
             parent="uacoin_menu_root"
             action="uacoin_payment_action"/>
-	
+            
 	<!--Uacoin accounts tree-->            
     <record id="uacoin_account_tree" model="ir.ui.view">
         <field name="name">uacoin_account.tree</field>
@@ -50,6 +59,13 @@
         <field name="model">uacoin.account</field>
         <field name="arch" type="xml">
             <form string="Uacoin account">
+            	<div class="oe_button_box" name="button_box">
+            		<button class="oe_stat_button"
+                            type="action" 
+                            name="%(uacoin_payment_action_form)d"
+                            context="{'default_account_id': id}"
+                            string="New payment"/>
+            	</div>
             	<group name="main">
 	                <field name="partner_id" string="Partner"/>
 	                <field name="partner_phone" string="Phone"/>
@@ -94,5 +110,5 @@
 			    </group>
         	</form>
         </field>
-    </record> 
+    </record>
 </odoo>

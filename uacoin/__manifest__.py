@@ -7,6 +7,7 @@
     'author': 'Alexey Zabuga',
     'depends': ['base', 'account'],
     'data': [
+            'security/ir.model.access.csv',
             'views/uacoin_view.xml',
     ],
     'application': True,

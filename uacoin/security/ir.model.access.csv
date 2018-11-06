@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_type_order_group_user,type.order.user,model_type_order,base.group_user,1,0,0,0
-access_type_order_group_system,type.order.system,model_type_order,base.group_system,1,1,1,1
+access_uacoin_account_group_user,uacoin.account.user,uacoin.model_uacoin_account,base.group_user,1,1,1,0
+access_uacoin_account_group_system,uacoin.account.system,uacoin.model_uacoin_account,base.group_system,1,1,1,1
+access_uacoin_payment_group_user,uacoin.payment.user,uacoin.model_uacoin_payment,base.group_user,1,1,1,0
+access_uacoin_payment_group_system,uacoin.payment.system,uacoin.model_uacoin_payment,base.group_system,1,1,1,1
