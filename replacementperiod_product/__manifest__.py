@@ -3,10 +3,11 @@
     'name': 'Replacement period',
     'description': 'Adds fields replacement period, URL to product',
     'author': 'Alexey Zabuga',
-    'depends': ['base', 'sale', 'product'],
+    'depends': ['base', 'sale', 'product', 'crm_phonecall', 'mail'],
     'data': [
-            'views/inherited_sale_order_view.xml',
-            'views/inherited_product_view.xml',
             'views/sale_order_line_view.xml',
+            'views/inherited_product_view.xml',
+            'views/inherited_crm_phonecall_view.xml',
+            'views/inherited_sale_order_view.xml',
             ],
 }

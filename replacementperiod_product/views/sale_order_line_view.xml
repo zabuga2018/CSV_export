@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+ 	<record id="email_template_replacement_period" model="mail.template">
+	     <field name="name">Replacement period Mass Mail</field>
+	     <field name="model_id" ref="base.model_res_partner"/>
+	     <field name="auto_delete" eval="True"/>
+	     <field name="partner_to">${object.order_partner_id}</field>
+	     <field name="subject">Replacement period ${object.product_id.name}</field>
+	     <field name="body_html" type="xml">
+	     	<p>Customer Name ${object.order_partner_id.name},</p>
+	     	<p>Order #${object.order_name},</p>
+	     	<p>Order date ${object.order_confirmation_date},</p>
+	     	<p>days to replacement ${object.days_to_replacement},</p>
+	     	<p>product ${object.product_id.name},</p>
+			<p>product url ${object.product_id.url},</p>	     	
+	     </field>
+	</record>        
+            
+	<act_window name="Customer Mass Mailing"
+         res_model="mail.compose.message"
+         src_model="sale.order.line"
+         view_mode="form"
+         multi="True"
+         target="new"
+         key2="client_action_multi"
+         id="action_customer_mass_mail"
+         context="{
+                     'default_composition_mode': 'mass_mail',
+                     'default_partner_to': '${object.order_partner_id or \'\'}',
+                     'default_use_template': True,
+                     'default_no_auto_thread': False,
+                     'default_template_id': ref('email_template_replacement_period'),
+                 }"/>
 	
 	<!--sale order lines tree-->
 	<record id="sale_order_line_view_tree" model="ir.ui.view">
@@ -10,11 +41,13 @@
 				<field name="pricelist"/>
 				<field name="order_name"/>
 				<field name="order_confirmation_date"/>
-				<field name="daystoreplacement"/>
+				<field name="days_to_replacement"/>
 				<field name="product_id"/>
 				<field name="qty_available"/>
 				<field name="order_partner_id"/>
+				<button string="Send letter" icon="fa-envelope" name="%(action_customer_mass_mail)d" type="action"/>
 				<field name="is_email_sent"/>
+				<button string="Make Call" icon="fa-phone" name="action_call_made" type="object"/>
 				<field name="is_call_made"/>
 			</tree>
         </field>
@@ -23,15 +56,16 @@
 	<!-- Action to open sale order line list -->
 	<act_window
 			id="sale_order_line_action"
-			name="Sale order lines with replacementperiod"
+			name="Replacement Period"
 			res_model="sale.order.line"
 			view_id="sale_order_line_view_tree"
-			view_mode="tree"/>
+			view_mode="tree"
+			domain="[('days_to_replacement', '>', 0)]"/>
 
 	<!-- Menu-->
 	<menuitem id="sale_order_lines_menu"
-            name="Sale order lines with replacementperiod"
+            name="Replacement period"
             parent="sale.menu_sale_report"
             action="sale_order_line_action"/>
-
+    
 </odoo>
